@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	typeAssertOK()
+	typeAssert()
 	typeAssertPanicWrongType()
 	typeAssertPanicTypeNotIdentical()
 	err := typeAssertCommaOK()
@@ -58,7 +58,7 @@ func typeAssertPanicWrongType() {
 
 type MyInt int
 
-func typeAssertOK() {
+func typeAssert() {
 	var i any
 	var mine MyInt = 20
 	i = mine
