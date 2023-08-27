@@ -24,10 +24,15 @@ type Incrementer interface {
 }
 
 func main() {
-	var pointerCounter *Counter
-	fmt.Println(pointerCounter == nil) // prints true
-	var incrementer Incrementer
-	fmt.Println(incrementer == nil) // prints true
-	incrementer = pointerCounter
-	fmt.Println(incrementer == nil) // prints false
+	var myStringer fmt.Stringer
+	var myIncrementer Incrementer
+	pointerCounter := &Counter{}
+	valueCounter := Counter{}
+
+	myStringer = pointerCounter    // ok
+	myStringer = valueCounter      // ok
+	myIncrementer = pointerCounter // ok
+	myIncrementer = valueCounter   // compile-time error!
+
+	fmt.Println(myStringer, myIncrementer)
 }
